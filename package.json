@@ -3,10 +3,13 @@
   "version": "0.0.1",
   "description": "A yeoman generator building NodeJS TypeScript module with semantic-release",
   "scripts": {
-    "lint": "eslint . --color",
+    "commit": "git-cz",
+    "cov": "nyc npm t",
+    "lint": "eslint '{generators,test}/**/*.js' --color",
     "lint:fix": "eslint --fix .",
-    "prettier": "prettier --write '{src,test}/**/*.js'",
-    "test": "mocha"
+    "prettier": "prettier --write '{generators,test}/**/*.js'",
+    "test": "mocha",
+    "test-ci": "npm run lint && npm run cov"
   },
   "repository": {
     "type": "git",
@@ -25,7 +28,9 @@
   },
   "homepage": "https://github.com/ccoeurderoy/semantic-module-generator#readme",
   "dependencies": {
-    "yeoman-generator": "^4.1.0"
+    "chalk": "^2.4.2",
+    "yeoman-generator": "^4.1.0",
+    "yosay": "^2.0.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
@@ -41,7 +46,11 @@
     "eslint-plugin-standard": "^4.0.1",
     "husky": "^3.0.9",
     "lint-staged": "^9.4.2",
-    "prettier": "^1.18.2"
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1",
+    "prettier": "^1.18.2",
+    "yeoman-assert": "^3.1.1",
+    "yeoman-test": "^2.0.0"
   },
   "config": {
     "commitizen": {
@@ -56,7 +65,27 @@
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
-      "prettier --list-different \"{src,test}/**/*.js\""
+      "prettier --list-different \"{generators,test}/**/*.js\""
     ]
+  },
+  "nyc": {
+    "include": [
+      "generators/**/*.js"
+    ],
+    "extension": [
+      ".js"
+    ],
+    "reporter": [
+      "json",
+      "html",
+      "lcov",
+      "text"
+    ],
+    "all": true,
+    "check-coverage": true,
+    "branches": 100,
+    "lines": 100,
+    "functions": 100,
+    "statements": 0
   }
 }
