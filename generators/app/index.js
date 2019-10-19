@@ -42,5 +42,10 @@ module.exports = class extends Generator {
       name: this.answers.name,
       description: this.answers.description,
     });
+
+    /**
+     * Add a prettier
+     */
+    this.fs.copy(this.templatePath('_.prettierrc.yaml'), this.destinationPath('.prettierrc.yaml'));
   }
 };

@@ -12,5 +12,6 @@ describe('Testing the generator', () => {
 
     assert.fileContent('package.json', /"name": "my-test-app"/);
     assert.fileContent('package.json', /"description": "My test app"/);
+    assert.file('.prettierrc.yaml');
   });
 });
