@@ -69,5 +69,11 @@ module.exports = class extends Generator {
         },
       );
     }
+
+    /**
+     * Add ts configuration
+     */
+    this.fs.copy(this.templatePath('_tsconfig.json'), this.destinationPath('tsconfig.json'));
+    this.fs.copy(this.templatePath('_tslint.json'), this.destinationPath('tslint.json'));
   }
 };
