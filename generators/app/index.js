@@ -26,6 +26,11 @@ module.exports = class extends Generator {
         name: 'description',
         message: 'Add a little description for your NPM package',
       },
+      {
+        type: 'confirm',
+        name: 'wantsSonarQube',
+        message: 'Do you want to add sonarqube to your module? (y/N)',
+      },
     ]);
 
     this.log(`Your package's name: ${this.answers.name}`);
@@ -47,5 +52,22 @@ module.exports = class extends Generator {
      * Add a prettier
      */
     this.fs.copy(this.templatePath('_.prettierrc.yaml'), this.destinationPath('.prettierrc.yaml'));
+
+    /**
+     * Add sonarqube if the user wants it
+     */
+    this.fs.copyTpl(this.templatePath('_.releaserc.json'), this.destinationPath('.releaserc.json'), {
+      hasSonarQube: this.answers.wantsSonarQube,
+    });
+    if (this.answers.wantsSonarQube) {
+      this.fs.copy(this.templatePath('_bumpSonarQube.js'), this.destinationPath('bumpSonarQube.js'));
+      this.fs.copyTpl(
+        this.templatePath('_sonar-project.properties'),
+        this.destinationPath('sonar-project.properties'),
+        {
+          name: this.answers.name,
+        },
+      );
+    }
   }
 };

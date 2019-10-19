@@ -1,0 +1,19 @@
+
+{
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/npm",
+    <% if (hasSonarQube) { %>
+    ["@semantic-release/exec", {
+      "prepareCmd": "node bumpSonarQube.js"
+    }],
+    <% } %>
+    "@semantic-release/github",
+    ["@semantic-release/git", {
+      "assets": ["package.json", "package-lock.json", "sonar-project.properties"],
+      "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
+    }]
+  ],
+  "preset": "angular"
+}
