@@ -76,4 +76,49 @@ module.exports = class extends Generator {
     this.fs.copy(this.templatePath('_tsconfig.json'), this.destinationPath('tsconfig.json'));
     this.fs.copy(this.templatePath('_tslint.json'), this.destinationPath('tslint.json'));
   }
+
+  /**
+   * Add required dependencies
+   */
+  install() {
+    this.npmInstall(
+      [
+        '@commitlint/cli',
+        '@commitlint/config-conventional',
+        '@semantic-release/commit-analyzer',
+        '@semantic-release/git',
+        '@yelloan/tslint',
+        'commitizen',
+        'cz-conventional-changelog',
+        'husky',
+        'lint-staged',
+        'prettier',
+        'semantic-release',
+        'ts-node',
+        'tslint',
+        'tslint-config-prettier',
+        'typescript',
+      ],
+      {
+        'save-dev': true,
+      },
+    );
+
+    /**
+     * Install exec and shelljs if SonarQube has been chosen
+     */
+    if (this.answers.wantsSonarQube) {
+      this.npmInstall(['@semantic-release/exec', 'shelljs'], {
+        'save-dev': true,
+      });
+    }
+  }
+
+  /**
+   * End of the script
+   * Install dependencies
+   */
+  end() {
+    this.log('Thank you! I will now install all dependencies');
+  }
 };

@@ -10,15 +10,15 @@ describe('Testing the generator', () => {
       .run(path.join(__dirname, '../generators/app'))
       .withPrompts({ name: appName, description: appDescription, wantsSonarQube: true });
 
-    assert.fileContent('package.json', /"name": "my-test-app"/);
-    assert.fileContent('package.json', /"description": "My test app"/);
-    assert.file('.prettierrc.yaml');
+    assert.jsonFileContent('package.json', {
+      name: appName,
+      description: appDescription,
+    });
     assert.fileContent('sonar-project.properties', /sonar.projectKey=my-test-app/);
     assert.fileContent('sonar-project.properties', /sonar.projectName=my-test-app/);
     assert.fileContent('.releaserc.json', /"prepareCmd": "node bumpSonarQube.js"/);
     assert.file('bumpSonarQube.js');
-    assert.file('tsconfig.json');
-    assert.file('tslint.json');
+    assert.file(['tsconfig.json', 'tslint.json', 'bumpSonarQube.js', '.prettierrc.yaml']);
   });
 
   it('should create a new module without SonarQube', async () => {
@@ -28,14 +28,14 @@ describe('Testing the generator', () => {
       .run(path.join(__dirname, '../generators/app'))
       .withPrompts({ name: appName, description: appDescription, wantsSonarQube: false });
 
-    assert.fileContent('package.json', /"name": "my-test-app"/);
-    assert.fileContent('package.json', /"description": "My test app"/);
-    assert.file('.prettierrc.yaml');
+    assert.jsonFileContent('package.json', {
+      name: appName,
+      description: appDescription,
+    });
     assert.noFile('sonar-project.properties');
     assert.noFile('sonar-project.properties');
     assert.noFileContent('.releaserc.json', /"prepareCmd": "node bumpSonarQube.js"/);
     assert.noFile('bumpSonarQube.js');
-    assert.file('tsconfig.json');
-    assert.file('tslint.json');
+    assert.file(['tsconfig.json', 'tslint.json', '.prettierrc.yaml']);
   });
 });
