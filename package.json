@@ -8,7 +8,7 @@
     "lint": "eslint '{generators,test}/**/*.js' --ignore-pattern generators/app/templates/*.js --color",
     "lint:fix": "eslint --fix .",
     "prettier": "prettier --write '{generators,test}/**/*.js'",
-    "test": "mocha",
+    "test": "mocha --no-timeouts",
     "test-ci": "npm run lint && npm run cov"
   },
   "repository": {
