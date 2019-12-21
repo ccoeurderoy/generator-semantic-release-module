@@ -8,6 +8,7 @@
     "lint": "eslint '{generators,test}/**/*.js' --ignore-pattern generators/app/templates/*.js --color",
     "lint:fix": "eslint --fix .",
     "prettier": "prettier --write '{generators,test}/**/*.js'",
+    "semantic-release": "semantic-release",
     "test": "mocha --no-timeouts",
     "test-ci": "npm run lint && npm run cov"
   },
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
+    "@semantic-release/git": "^7.0.18",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.5.1",
@@ -49,6 +51,7 @@
     "mocha": "^6.2.2",
     "nyc": "^14.1.1",
     "prettier": "^1.18.2",
+    "semantic-release": "^15.14.0",
     "yeoman-assert": "^3.1.1",
     "yeoman-test": "^2.0.0"
   },
