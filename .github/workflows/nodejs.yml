@@ -33,15 +33,17 @@ jobs:
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 12.x
           registry-url: https://registry.npmjs.org/
-      - run: npm install
-      - run: npm run semantic-release
+      - name: Install dependencies
+        run: npm install
+      - name: Run Semantic Release to publish on NPM
+        run: npm run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
