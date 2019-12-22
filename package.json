@@ -1,5 +1,5 @@
 {
-  "name": "semantic-module-generator",
+  "name": "generator-semantic-release-module",
   "version": "0.0.1",
   "description": "A yeoman generator building NodeJS TypeScript module with semantic-release",
   "scripts": {
