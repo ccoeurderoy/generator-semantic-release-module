@@ -17,7 +17,7 @@
     "url": "git+https://github.com/ccoeurderoy/semantic-module-generator.git"
   },
   "keywords": [
-    "yeoman-generators"
+    "yeoman-generator"
   ],
   "files": [
     "generators"
