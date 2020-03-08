@@ -18,7 +18,7 @@ describe('Testing the generator', () => {
     assert.fileContent('sonar-project.properties', /sonar.projectName=my-test-app/);
     assert.fileContent('.releaserc.json', /"prepareCmd": "node bumpSonarQube.js"/);
     assert.file('bumpSonarQube.js');
-    assert.file(['tsconfig.json', 'tslint.json', 'bumpSonarQube.js', '.prettierrc.yaml']);
+    assert.file(['tsconfig.json', 'tslint.json', 'bumpSonarQube.js', '.prettierrc.yaml', '.gitignore']);
   });
 
   it('should create a new module without SonarQube', async () => {
@@ -36,6 +36,6 @@ describe('Testing the generator', () => {
     assert.noFile('sonar-project.properties');
     assert.noFileContent('.releaserc.json', /"prepareCmd": "node bumpSonarQube.js"/);
     assert.noFile('bumpSonarQube.js');
-    assert.file(['tsconfig.json', 'tslint.json', '.prettierrc.yaml']);
+    assert.file(['tsconfig.json', 'tslint.json', '.prettierrc.yaml', '.gitignore']);
   });
 });
