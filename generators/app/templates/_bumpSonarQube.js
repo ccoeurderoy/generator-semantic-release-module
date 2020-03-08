@@ -21,10 +21,9 @@ const bumpAppVersion = async function() {
    */
   const sonarFileReplaced = sonarFile.replace(/sonar\.projectVersion=.*/, `sonar.projectVersion=${pkgVersion}`);
   await writeFileP('sonar-project.properties', sonarFileReplaced, 'utf8');
-}
+};
 
-return bumpAppVersion()
-.catch((err) => {
+return bumpAppVersion().catch((err) => {
   console.error(err);
   process.exit(1);
 });

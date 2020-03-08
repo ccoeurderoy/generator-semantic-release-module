@@ -15,10 +15,6 @@
     "semantic-release": "semantic-release",
     "test": "mocha"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yelloan/node-helpers.git"
-  },
   "files": [
     "dist/src"
   ],
@@ -29,10 +25,6 @@
   ],
   "author": "ccoeurderoy",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/yelloan/node-helpers/issues"
-  },
-  "homepage": "https://github.com/yelloan/node-helpers#readme",
   "lint-staged": {
     "{src,test}/**/*.ts": [
       "prettier --list-different \"{src,test}/**/*.ts\""
