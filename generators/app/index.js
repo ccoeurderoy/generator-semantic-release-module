@@ -49,6 +49,11 @@ module.exports = class extends Generator {
     });
 
     /**
+     * Add a .gitignore file
+     */
+    this.fs.copy(this.templatePath('_.gitignore'), this.destinationPath('.gitignore'));
+
+    /**
      * Add a prettier
      */
     this.fs.copy(this.templatePath('_.prettierrc.yaml'), this.destinationPath('.prettierrc.yaml'));
