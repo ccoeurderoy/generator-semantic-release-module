@@ -5,7 +5,7 @@ const promisify = require('util').promisify;
 const readFileP = promisify(fs.readFile);
 const writeFileP = promisify(fs.writeFile);
 
-const bumpAppVersion = async function() {
+const bumpAppVersion = async function () {
   /**
    * Read Sonar properties file
    */
