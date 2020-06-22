@@ -34,7 +34,7 @@
     "yosay": "^2.0.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
+    "@commitlint/cli": "^9.0.1",
     "@commitlint/config-conventional": "^8.2.0",
     "@semantic-release/git": "^9.0.0",
     "commitizen": "^4.1.2",
