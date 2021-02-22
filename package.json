@@ -30,7 +30,7 @@
   "homepage": "https://github.com/ccoeurderoy/semantic-module-generator#readme",
   "dependencies": {
     "chalk": "^4.0.0",
-    "yeoman-generator": "^4.10.1",
+    "yeoman-generator": "^5.0.0",
     "yosay": "^2.0.2"
   },
   "devDependencies": {
